@@ -56,7 +56,10 @@ def load_artifacts() -> None:
 async def lifespan(app: FastAPI):
     setup_logging()
     load_artifacts()
-    sync_result = sync_model_metrics_to_supabase(_models_dir())
+    try:
+        sync_result = sync_model_metrics_to_supabase(_models_dir())
+    except Exception as exc:  # noqa: BLE001
+        sync_result = {"synced": 0, "error": str(exc)}
     log_event({"event": "startup", "models": list(MODELS), "supabase_metrics": sync_result})
     yield
 

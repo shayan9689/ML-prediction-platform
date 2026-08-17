@@ -23,21 +23,32 @@ def sync_model_metrics_to_supabase(artifacts_dir: Path | None = None) -> dict:
     except ImportError:
         return {"synced": 0, "error": "supabase package not installed"}
 
-    client = create_client(url, key)
+    try:
+        client = create_client(url, key)
+    except Exception as exc:
+        return {"synced": 0, "error": f"supabase client init failed: {exc}"}
+
     synced = 0
+    errors: list[str] = []
     for task_id in TASKS:
         meta_path = folder / f"{task_id}_metrics.json"
         if not meta_path.exists():
             continue
-        meta = json.loads(meta_path.read_text(encoding="utf-8"))
-        row = {
-            "task": task_id,
-            "best_model": meta.get("best_model", "unknown"),
-            "metrics": meta.get("metrics", {}),
-            "comparison": meta.get("comparison", []),
-            "feature_importance": meta.get("feature_importance", []),
-            "trained_at": meta.get("trained_at") or datetime.now(timezone.utc).isoformat(),
-        }
-        client.table("model_metrics").upsert(row).execute()
-        synced += 1
-    return {"synced": synced}
+        try:
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+            row = {
+                "task": task_id,
+                "best_model": meta.get("best_model", "unknown"),
+                "metrics": meta.get("metrics", {}),
+                "comparison": meta.get("comparison", []),
+                "feature_importance": meta.get("feature_importance", []),
+                "trained_at": meta.get("trained_at") or datetime.now(timezone.utc).isoformat(),
+            }
+            client.table("model_metrics").upsert(row).execute()
+            synced += 1
+        except Exception as exc:  # noqa: BLE001
+            errors.append(f"{task_id}: {exc}")
+    result: dict = {"synced": synced}
+    if errors:
+        result["errors"] = errors
+    return result
