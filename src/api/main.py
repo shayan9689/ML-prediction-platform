@@ -18,6 +18,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from src.api.logging_config import log_event, persist_prediction, setup_logging
+from src.api.supabase_sync import sync_model_metrics_to_supabase
 from src.api.schemas import (
     HealthResponse,
     MetricsResponse,
@@ -55,7 +56,8 @@ def load_artifacts() -> None:
 async def lifespan(app: FastAPI):
     setup_logging()
     load_artifacts()
-    log_event({"event": "startup", "models": list(MODELS)})
+    sync_result = sync_model_metrics_to_supabase(_models_dir())
+    log_event({"event": "startup", "models": list(MODELS), "supabase_metrics": sync_result})
     yield
 
 

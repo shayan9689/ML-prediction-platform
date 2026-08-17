@@ -150,16 +150,7 @@ def prepare_task(task_id: str, persist: bool = True) -> dict:
     preprocess.fit(x_train)
     if persist:
         PROCESSED.mkdir(parents=True, exist_ok=True)
-        save_pipeline(preprocess, task_id)
-        bundle = {
-            "x_train": x_train,
-            "x_val": x_val,
-            "x_test": x_test,
-            "y_train": y_train,
-            "y_val": y_val,
-            "y_test": y_test,
-        }
-        joblib.dump(bundle, PROCESSED / f"{task_id}_splits.joblib")
+        # Full preprocess+model pipeline is saved in train.py; no separate artifact needed here.
     return {
         "task": task,
         "preprocess": preprocess,

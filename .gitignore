@@ -37,3 +37,13 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+.cursor/
+
+# Docs / reports / notebooks (local only — not pushed)
+spec.md
+docs/deployment.md
+docs/deploy-supabase-railway.md
+docs/wireframes.md
+reports/
+notebooks/
+*.pdf
