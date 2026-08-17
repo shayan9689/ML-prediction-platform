@@ -1,0 +1,15 @@
+---
+description: ML Prediction Platform stack, scope, and coding conventions
+alwaysApply: true
+---
+
+# ML Prediction Platform
+
+Locked stack: Python 3.11, scikit-learn, XGBoost, FastAPI on Railway, React+Vite+Tailwind on Vercel, Supabase for logs/metrics.
+
+v1 tasks only: `house_price`, `churn`, `loan_default`. Column lists and metrics live in `src/config.py`.
+
+- Save inference as `preprocess + model` joblib pipelines.
+- Frontend calls FastAPI only (`VITE_API_BASE_URL`).
+- If Supabase env vars are missing, fall back to local SQLite.
+- Do not add auth, arbitrary-CSV AutoML, or extra tasks unless asked.

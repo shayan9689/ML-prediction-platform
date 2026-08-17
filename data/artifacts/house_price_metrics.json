@@ -1,0 +1,137 @@
+{
+  "task": "house_price",
+  "task_name": "House Price",
+  "type": "regression",
+  "best_model": "xgboost",
+  "select_metric": "r2",
+  "metrics": {
+    "rmse": 47420.38901673989,
+    "mae": 31786.071953982962,
+    "r2": 0.8284105400361104
+  },
+  "comparison": [
+    {
+      "model": "xgboost",
+      "rmse": 47420.38901673989,
+      "mae": 31786.071953982962,
+      "r2": 0.8284105400361104
+    },
+    {
+      "model": "random_forest",
+      "rmse": 50219.46713923151,
+      "mae": 32920.327873539325,
+      "r2": 0.8075559079104473
+    }
+  ],
+  "train_vs_test": {
+    "train": {
+      "rmse": 37359.031832013105,
+      "mae": 25904.313879344434,
+      "r2": 0.895474023285128
+    },
+    "test": {
+      "rmse": 47420.38901673989,
+      "mae": 31786.071953982962,
+      "r2": 0.8284105400361104
+    }
+  },
+  "feature_importance": [
+    {
+      "feature": "ocean_proximity_INLAND",
+      "importance": 0.5223281383514404
+    },
+    {
+      "feature": "median_income",
+      "importance": 0.17456036806106567
+    },
+    {
+      "feature": "ocean_proximity_NEAR OCEAN",
+      "importance": 0.047534290701150894
+    },
+    {
+      "feature": "longitude",
+      "importance": 0.04101620987057686
+    },
+    {
+      "feature": "ocean_proximity_<1H OCEAN",
+      "importance": 0.03912820294499397
+    },
+    {
+      "feature": "latitude",
+      "importance": 0.033393606543540955
+    },
+    {
+      "feature": "ocean_proximity_NEAR BAY",
+      "importance": 0.03174690902233124
+    },
+    {
+      "feature": "housing_median_age",
+      "importance": 0.02329825796186924
+    },
+    {
+      "feature": "ocean_proximity_ISLAND",
+      "importance": 0.022156231105327606
+    },
+    {
+      "feature": "population",
+      "importance": 0.021437445655465126
+    },
+    {
+      "feature": "total_rooms",
+      "importance": 0.01691800355911255
+    },
+    {
+      "feature": "total_bedrooms",
+      "importance": 0.013792992569506168
+    },
+    {
+      "feature": "households",
+      "importance": 0.012689302675426006
+    }
+  ],
+  "params": {
+    "objective": "reg:squarederror",
+    "base_score": null,
+    "booster": null,
+    "callbacks": null,
+    "colsample_bylevel": null,
+    "colsample_bynode": null,
+    "colsample_bytree": 0.8,
+    "device": null,
+    "early_stopping_rounds": null,
+    "enable_categorical": true,
+    "eval_metric": null,
+    "feature_types": null,
+    "feature_weights": null,
+    "gamma": null,
+    "grow_policy": null,
+    "importance_type": null,
+    "interaction_constraints": null,
+    "learning_rate": 0.1,
+    "max_bin": null,
+    "max_cat_threshold": null,
+    "max_cat_to_onehot": null,
+    "max_delta_step": null,
+    "max_depth": 6,
+    "max_leaves": null,
+    "min_child_weight": null,
+    "missing": NaN,
+    "monotone_constraints": null,
+    "multi_strategy": null,
+    "n_estimators": 120,
+    "n_jobs": -1,
+    "num_parallel_tree": null,
+    "random_state": 42,
+    "reg_alpha": null,
+    "reg_lambda": null,
+    "sampling_method": null,
+    "scale_pos_weight": null,
+    "subsample": 0.8,
+    "tree_method": null,
+    "validate_parameters": null,
+    "verbosity": 0
+  },
+  "trained_at": "2026-08-17T21:09:08.554776+00:00",
+  "n_train": 17544,
+  "n_test": 3096
+}

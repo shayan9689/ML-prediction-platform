@@ -1,0 +1,160 @@
+{
+  "task": "churn",
+  "task_name": "Customer Churn",
+  "type": "classification",
+  "best_model": "xgboost",
+  "select_metric": "roc_auc",
+  "metrics": {
+    "accuracy": 0.7559129612109745,
+    "precision": 0.5248868778280543,
+    "recall": 0.8285714285714286,
+    "f1": 0.6426592797783933,
+    "roc_auc": 0.8555088251516824,
+    "brier": 0.16066297888755798
+  },
+  "comparison": [
+    {
+      "model": "logistic_regression",
+      "accuracy": 0.7369914853358562,
+      "precision": 0.5022123893805309,
+      "recall": 0.8107142857142857,
+      "f1": 0.6202185792349727,
+      "roc_auc": 0.8489726971869829,
+      "brier": 0.16741398739936497
+    },
+    {
+      "model": "xgboost",
+      "accuracy": 0.7559129612109745,
+      "precision": 0.5248868778280543,
+      "recall": 0.8285714285714286,
+      "f1": 0.6426592797783933,
+      "roc_auc": 0.8555088251516824,
+      "brier": 0.16066297888755798
+    }
+  ],
+  "train_vs_test": {
+    "train": {
+      "accuracy": 0.7646174406949549,
+      "precision": 0.5368550368550369,
+      "recall": 0.8250471994965387,
+      "f1": 0.6504589431902754,
+      "roc_auc": 0.8666803686305369,
+      "brier": 0.1535048484802246
+    },
+    "test": {
+      "accuracy": 0.7559129612109745,
+      "precision": 0.5248868778280543,
+      "recall": 0.8285714285714286,
+      "f1": 0.6426592797783933,
+      "roc_auc": 0.8555088251516824,
+      "brier": 0.16066297888755798
+    }
+  },
+  "feature_importance": [
+    {
+      "feature": "Contract_Month-to-month",
+      "importance": 0.446859210729599
+    },
+    {
+      "feature": "TechSupport_No",
+      "importance": 0.10430862754583359
+    },
+    {
+      "feature": "OnlineSecurity_No",
+      "importance": 0.08996084332466125
+    },
+    {
+      "feature": "InternetService_Fiber optic",
+      "importance": 0.06529853492975235
+    },
+    {
+      "feature": "Contract_Two year",
+      "importance": 0.043183788657188416
+    },
+    {
+      "feature": "StreamingMovies_Yes",
+      "importance": 0.038196075707674026
+    },
+    {
+      "feature": "PaymentMethod_Electronic check",
+      "importance": 0.03222626447677612
+    },
+    {
+      "feature": "InternetService_DSL",
+      "importance": 0.02878350019454956
+    },
+    {
+      "feature": "tenure",
+      "importance": 0.028565945103764534
+    },
+    {
+      "feature": "InternetService_No",
+      "importance": 0.025113411247730255
+    },
+    {
+      "feature": "Contract_One year",
+      "importance": 0.022610468789935112
+    },
+    {
+      "feature": "PaperlessBilling_Yes",
+      "importance": 0.021246273070573807
+    },
+    {
+      "feature": "PaperlessBilling_No",
+      "importance": 0.01916944608092308
+    },
+    {
+      "feature": "OnlineBackup_No",
+      "importance": 0.01901731826364994
+    },
+    {
+      "feature": "MonthlyCharges",
+      "importance": 0.015460330992937088
+    }
+  ],
+  "params": {
+    "objective": "binary:logistic",
+    "base_score": null,
+    "booster": null,
+    "callbacks": null,
+    "colsample_bylevel": null,
+    "colsample_bynode": null,
+    "colsample_bytree": 0.8,
+    "device": null,
+    "early_stopping_rounds": null,
+    "enable_categorical": true,
+    "eval_metric": "logloss",
+    "feature_types": null,
+    "feature_weights": null,
+    "gamma": null,
+    "grow_policy": null,
+    "importance_type": null,
+    "interaction_constraints": null,
+    "learning_rate": 0.05,
+    "max_bin": null,
+    "max_cat_threshold": null,
+    "max_cat_to_onehot": null,
+    "max_delta_step": null,
+    "max_depth": 3,
+    "max_leaves": null,
+    "min_child_weight": null,
+    "missing": NaN,
+    "monotone_constraints": null,
+    "multi_strategy": null,
+    "n_estimators": 120,
+    "n_jobs": -1,
+    "num_parallel_tree": null,
+    "random_state": 42,
+    "reg_alpha": null,
+    "reg_lambda": null,
+    "sampling_method": null,
+    "scale_pos_weight": 2.768348623853211,
+    "subsample": 0.8,
+    "tree_method": null,
+    "validate_parameters": null,
+    "verbosity": 0
+  },
+  "trained_at": "2026-08-17T21:09:13.108323+00:00",
+  "n_train": 5986,
+  "n_test": 1057
+}

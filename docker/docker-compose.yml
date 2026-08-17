@@ -1,0 +1,15 @@
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../.env.example
+    environment:
+      CORS_ORIGINS: http://localhost:5173
+      MODELS_DIR: /app/data/artifacts
+    volumes:
+      - ../data/artifacts:/app/data/artifacts
+      - ../logs:/app/logs

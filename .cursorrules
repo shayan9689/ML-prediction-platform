@@ -1,0 +1,13 @@
+You are working on ML Prediction Platform.
+
+Stack (locked): Python 3.11, pandas, scikit-learn, XGBoost, FastAPI, React+Vite+Tailwind, Supabase Postgres, Railway (API), Vercel (frontend).
+
+Scope: three tasks only — house_price (regression), churn (classification), loan_default (probability). Do not build generic AutoML.
+
+Conventions:
+- Task config lives in src/config.py. Do not hardcode column lists in the API or frontend.
+- Persist preprocessing + model together (sklearn Pipeline) with joblib.
+- React talks only to FastAPI. Never call Supabase from the browser.
+- Prefer small, tested modules over notebooks for production paths.
+- Keep hyperparameter grids small enough to train on a laptop.
+- No new dependencies unless required for a phase deliverable.
